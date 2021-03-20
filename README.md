@@ -8,17 +8,21 @@
 Hiding is a very simple 25 LOC lib that allows hiding text inside text. 
 It could be seen as a rudimentary text based steganography. In fact, during drafting stages, this project was known as "testegano" - a portmanteau of "text" and "stegano". 
 
+#### Name
+
+To be honest, I wasn't a fan of testegano. Some kind discord user gave me the idea to use Hiding, which not only describes what it does, is also a reference to how snakes (python is a snake) hide their skin. The snake looks the same before and after the hiding process; similar to this lib.  
+
 ## Uses 
-Please don't use this in production. This is more a proof of concept than a useful​‌​‌‌​​‌​‌‌​​‌​‌​‌‌‌​​‌‌​​‌​‌‌​​​​‌​​​​​​‌‌​‌‌‌‌​‌‌​​‌‌​​​‌​​​​​​‌‌​​​‌‌​‌‌​‌‌‌‌​‌‌‌​‌​‌​‌‌‌​​‌​​‌‌‌​​‌‌​‌‌​​‌​‌​​‌​​​​​​‌​​‌​​‌​​‌​​‌‌‌​‌‌​‌‌​‌​​‌​​​​​​‌‌​​‌‌‌​‌‌​‌‌‌‌​‌‌​‌​​‌​‌‌​‌‌‌​​‌‌​​‌‌‌​​‌​​​​​​‌‌‌​‌​​​‌‌​‌‌‌‌​​‌​​​​​​‌‌​‌​​​​‌‌​‌​​‌​‌‌​​‌​​​‌‌​​‌​‌​​‌​​​​​​‌‌​‌‌​‌​‌‌​​‌​‌​‌‌‌​​‌‌​‌‌‌​​‌‌​‌‌​​​​‌​‌‌​​‌‌‌​‌‌​​‌​‌​‌‌‌​​‌‌​​‌​​​​​​‌‌​‌​​‌​‌‌​‌‌‌​​​‌​​​​​​‌‌​‌​​​​‌‌​​‌​‌​‌‌‌​​‌​​‌‌​​‌​‌​​‌​‌‌‌​ lib. While it can be useful to hide some text, it's unfeasible to use this for any text bigger than 5 characters. 
+Please don't use this in production. This is more a proof of concept than a useful​‌​‌‌​​‌​‌‌​​‌​‌​‌‌‌​​‌‌​​‌​‌‌​​​​‌​​​​​​‌‌​‌‌‌‌​‌‌​​‌‌​​​‌​​​​​​‌‌​​​‌‌​‌‌​‌‌‌‌​‌‌‌​‌​‌​‌‌‌​​‌​​‌‌‌​​‌‌​‌‌​​‌​‌​​‌​​​​​​‌​​‌​​‌​​‌​​‌‌‌​‌‌​‌‌​‌​​‌​​​​​​‌‌​​‌‌‌​‌‌​‌‌‌‌​‌‌​‌​​‌​‌‌​‌‌‌​​‌‌​​‌‌‌​​‌​​​​​​‌‌‌​‌​​​‌‌​‌‌‌‌​​‌​​​​​​‌‌​‌​​​​‌‌​‌​​‌​‌‌​​‌​​​‌‌​​‌​‌​​‌​​​​​​‌‌​‌‌​‌​‌‌​​‌​‌​‌‌‌​​‌‌​‌‌‌​​‌‌​‌‌​​​​‌​‌‌​​‌‌‌​‌‌​​‌​‌​‌‌‌​​‌‌​​‌​​​​​​‌‌​‌​​‌​‌‌​‌‌‌​​​‌​​​​​​‌‌​‌​​​​‌‌​​‌​‌​‌‌‌​​‌​​‌‌​​‌​‌​​‌​‌‌‌​ lib. While it can be useful to hide some text, it's unfeasible to use this for any text longer than a short sentence. 
 It is less secure than conventional image based stegano, as some editors either show the unicode or show them as spaces. 
 
 ## Theory
-The unicode consortium was founded to make a universial code (as the name suggests). This means they have to factor in edge cases like CJK characters who doesn't have conventional spaces. That's why they've made 2 types of "invisible" space characters.  \u200b and \u200c. Hiding exploits that by converting the message from ascii into binary, then writing the message in the middle of the string, \u200b for 0, \u200c for 1. Because they do not break the text, it would be hard for a naked eye to see them (unless of course, someone puts it in a character count or tries to delete the text by backspace). 
+The unicode consortium was founded to make a universial code (as the name suggests). This means they have to factor in edge cases like CJK characters who doesn't have conventional spaces. That's why they've made 2 "invisible" space characters.  \u200b and \u200c. Hiding exploits that by converting the message from ascii into binary, then writing the message in the middle of the string, \u200b for 0, \u200c for 1. Because they do not break the text, it would be hard for a naked eye to see them (unless of course, someone puts it in a character count or tries to delete the text by backspace). 
 
 ## Limitations
 - Because everything is stored in binary, the hidden length will be eight times longer than the normal length. This means you can't hide essaies in text :(.
 
-- It uses ascii, which means diacritics and non-latin letters won't be supported. 
+- It uses ascii, which means diacritics and non-latin writing systems won't be supported. 
 
 - It's a literal PITA to deal with the text. You'll have to be careful wit​‌​‌​‌‌‌​‌‌​​‌​‌​‌‌​‌‌​​​‌‌​‌‌​​​​‌​​​​​​‌‌​​‌​​​‌‌​‌‌‌‌​‌‌​‌‌‌​​‌‌​​‌​‌​​‌​​​​​​‌‌​​‌‌​​‌‌​‌​​‌​‌‌​‌‌‌​​‌‌​​‌​​​‌‌​‌​​‌​‌‌​‌‌‌​​‌‌​​‌‌‌​​‌​​​​​​‌‌​‌‌​‌​‌‌​​‌​‌​​‌​​​​​​‌‌‌​‌​​​‌‌​‌​​​​‌‌​‌‌‌‌h it because it's invisible. 
 
@@ -51,6 +55,7 @@ To get the secret message back from a hidden text, you may use the `show()` func
 
 ```py
 from hiding import hide, show
+
 print(show("This is a long ​‌‌‌​​‌‌​‌‌​​‌​‌​‌‌​​​‌‌​‌‌‌​​‌​​‌‌​​‌​‌​‌‌‌​‌​​​‌‌​‌‌​‌​‌‌‌​​‌‌​‌‌​​‌‌‌string of text."))
 ```
 Show only takes 1 argument, the hidden text. It either returns a string or a None. The None will be returned when the message could not be found. This way, you could check if something contains a message simply by `if show("Message Here"):`. As it would return false if there isn't a message. 
@@ -59,7 +64,7 @@ Show only takes 1 argument, the hidden text. It either returns a string or a Non
 You are discouraged to use this lib for anything important, but I am happy to give support. Email me at <contact@johnngnky.xyz> and I'd love to help. 
 
 ## License 
-Do whatever the fuck you want. 
+Do whatever the fuck you want. Copy it, feed it to your dog, burn it, whatever, I don't care.  
 [![](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-1.png)](http://www.wtfpl.net).
 ```
             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
